@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="./forlogin.css ">
+
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- <img src="png/rocket.png" alt="rocket" class="rocket"> -->
+        <div class="text">
+            <h1>LOGIN</h1>
+        </div>
+        <form id = "loginform" class="form" >
+            <div class="animated-input">
+                <input type="text" placeholder="Username" id="name" maxlength='10' name="name">
+            </div>
+            <div class="animated-input">
+                <input type="password" placeholder="Password" id="password" maxlength='10' name="password">
+            </div>
+        </form>
+        <br />
+        <button class="button-1" id="login">LOGIN</button>
+        <br />
+        <br />
+        <div>
+            <a href="../sign/sign.html">Sign Up</a>
+        </div>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<script src="forlogin.js"></script>
+
+<script>
+    $(document).ready(function () {
+
+        const formObj = $("#loginform");
+
+        console.log("1")
+        $("#login").on("click",function (){
+            console.log("1");
+            formObj.attr("action", "/login")
+            formObj.attr("method", "post");
+            formObj.submit();
+        });
+    });
+</script>
+
+</html>
