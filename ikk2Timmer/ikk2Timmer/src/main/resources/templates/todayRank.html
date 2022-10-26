@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Rank</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th align="center" width="80">TOP</th>
+            <th align="center" width="80">NAME</th>
+            <th align="center" width="80">TIME</th>
+        </tr>
+
+        <tr th:if="${#lists.isEmpty(list)}">
+            <td colspan="4">
+                List is empty
+            </td>
+        </tr>
+
+        <tr th:each="list : ${list}">
+            <td align="center" th:text="${list.id}"></td>
+            <td align="left" th:text="${list.username}"></td>
+            <td align="right" th:text="${list.h}"></td>
+        </tr>
+
+    </table>
+</body>
+</html>
