@@ -13,11 +13,10 @@ public class User {
     @Column(name = "idx")
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "name", unique = true)
     private String name;
 
     @Column(name = "password")
     private String password;
-
 
 }
