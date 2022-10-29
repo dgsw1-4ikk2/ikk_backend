@@ -26,4 +26,8 @@ public class RankController {
         return "todayRank";
     }
 
+    @GetMapping("/total-rank")
+    public String totalRank(Model model) {
+        return "";
+    }
 }
