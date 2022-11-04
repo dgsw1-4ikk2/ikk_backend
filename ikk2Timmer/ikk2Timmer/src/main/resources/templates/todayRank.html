@@ -21,7 +21,7 @@
 
         <tr th:each="list,iterState : ${list}">
             <td align="center" th:text="${iterState.count}"></td>
-            <td align="center" th:text="${list.username}"></td>
+            <td align="center" th:text="${list.user.name}"></td>
             <td align="center" th:text="${list.h}"></td>
             <td align="center" th:text="${list.m}"></td>
         </tr>

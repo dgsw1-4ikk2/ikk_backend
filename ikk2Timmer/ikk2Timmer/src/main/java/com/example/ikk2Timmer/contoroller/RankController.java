@@ -5,11 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.Collections;
-
-import java.util.Collection;
-import java.util.List;
-
 @Controller
 public class RankController {
 
@@ -22,12 +17,12 @@ public class RankController {
     @GetMapping("/today-rank")
     public String todayRank(Model model) {
         model.addAttribute("list",rankService.list());
-        System.out.println(rankService.list());
         return "todayRank";
     }
 
     @GetMapping("/total-rank")
     public String totalRank(Model model) {
-        return "";
+        model.addAttribute("list",rankService.findTotalRank());
+        return "totalRank";
     }
 }

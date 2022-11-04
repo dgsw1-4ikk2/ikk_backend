@@ -1,19 +1,19 @@
 package com.example.ikk2Timmer.Security;
 
 import com.example.ikk2Timmer.Domain.User;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
 @Getter
+@RequiredArgsConstructor
 public class UserDetailsImpl implements UserDetails {
-    private User user;
-
-    public UserDetailsImpl(User user) {
-        this.user = user;
-    }
+    private final User user;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

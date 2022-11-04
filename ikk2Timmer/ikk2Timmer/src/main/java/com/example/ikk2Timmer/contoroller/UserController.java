@@ -4,6 +4,8 @@ import com.example.ikk2Timmer.Domain.User;
 import com.example.ikk2Timmer.Repository.UserRepository;
 import com.example.ikk2Timmer.Service.Impl.UserServiceImpl;
 import com.example.ikk2Timmer.Service.UserService;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -13,15 +15,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
+import java.util.HashSet;
 
 @Controller
+@RequiredArgsConstructor
 public class UserController {
 
-    @Autowired
-    private UserServiceImpl userService;
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserServiceImpl userService;
+
 
     @RequestMapping("/")
     public String home(Principal principal ,Model model) {
@@ -43,10 +45,10 @@ public class UserController {
         return "success";
     }
 
-
     @GetMapping("/login")
     public String login(Model model) {
         return "login";
     }
+
 
 }
