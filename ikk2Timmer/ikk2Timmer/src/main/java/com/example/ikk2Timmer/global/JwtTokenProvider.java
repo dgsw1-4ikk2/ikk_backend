@@ -5,6 +5,7 @@ import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,10 +18,13 @@ import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 
+@Slf4j
 @RequiredArgsConstructor
 @Component
 public class JwtTokenProvider {
-    private String secretKey = "kmklnIONLCSKJDI0u9jckslnkBGD90ndikcig89HPNCKN90VNJDNLJamong1";
+
+    private String key = "kmklnIONLCSKJDI0u9jckslnkBGD90ndikcig89HPNCKN90VNJDNLJamong1";
+    private String secretKey = key;
 
     private Long tokenValidTime = 1440*60*7+1000L;
     private final UserDetailsService userDetailsService;
@@ -46,8 +50,10 @@ public class JwtTokenProvider {
 
     // JWT 토큰에서 인증 정보 조회
     public Authentication getAuthentication(String token) {
+        System.out.println("getAuthentication");
         UserDetails userDetails = userDetailsService.loadUserByUsername(this.getUserPk(token));
-        return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
+//        log.info(userDetails.getAuthorities().toString());
+        return new UsernamePasswordAuthenticationToken(userDetails, userDetails.getPassword(), userDetails.getAuthorities());
     }
 
     // 토큰에서 회원 정보 추출

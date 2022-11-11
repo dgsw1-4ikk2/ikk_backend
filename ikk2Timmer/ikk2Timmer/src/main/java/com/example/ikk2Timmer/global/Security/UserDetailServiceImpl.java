@@ -1,6 +1,7 @@
 package com.example.ikk2Timmer.global.Security;
 
-import com.example.ikk2Timmer.domain.user.Entity.User;
+
+import com.example.ikk2Timmer.domain.user.Entity.Member;
 import com.example.ikk2Timmer.domain.user.repository.MemberRepository;
 import com.example.ikk2Timmer.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,11 +18,12 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserDetailServiceImpl implements UserDetailsService  {
     private final MemberRepository memberRepository;
 
-
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return (UserDetails) memberRepository.findByName(username)
-                .orElseThrow(() -> new UsernameNotFoundException("사용자를 찾을 수 없아요"));
+        System.out.println("ddd" + username);
+        Member member = memberRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("사용자를 찾을 수 없어요"));
+
+        return new UserDetailsImpl(member);
     }
 }

@@ -18,8 +18,9 @@ public class SignUpDto {
 
     @Builder
     public Member toEntity() {
+        //System.out.println(password);
         return Member.builder()
-                .name(name)
+                .username(name)
                 .password(password)
                 .role(role)
                 .build();

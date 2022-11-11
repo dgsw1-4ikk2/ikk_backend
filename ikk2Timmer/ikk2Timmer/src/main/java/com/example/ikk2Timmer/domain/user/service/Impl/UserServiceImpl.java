@@ -2,7 +2,9 @@ package com.example.ikk2Timmer.domain.user.service.Impl;
 
 import com.example.ikk2Timmer.domain.record.Entity.Record;
 import com.example.ikk2Timmer.domain.record.Dto.RecordDto;
+import com.example.ikk2Timmer.domain.user.Entity.Member;
 import com.example.ikk2Timmer.domain.user.Entity.User;
+import com.example.ikk2Timmer.domain.user.repository.MemberRepository;
 import com.example.ikk2Timmer.domain.user.repository.UserRepository;
 import com.example.ikk2Timmer.domain.user.service.UserService;
 import com.example.ikk2Timmer.global.Security.UserDetailsImpl;
@@ -26,6 +28,9 @@ public class UserServiceImpl implements UserService {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
+    private MemberRepository memberRepository;
+
+    @Autowired
     private UserDetailsService userDetailsService;
 
     @Override
@@ -43,10 +48,10 @@ public class UserServiceImpl implements UserService {
             throw new IllegalArgumentException();
         }
 
-        User user = ((UserDetailsImpl) userDetails).getUser();
+        Member member = ((UserDetailsImpl) userDetails).getMember();
         Record record = recordDto.toEntity();
-        user.addRecord(record);
-        userRepository.save(user);
+        member.addRecord(record);
+        memberRepository.save(member);
     }
 
     @Transactional(readOnly = true)

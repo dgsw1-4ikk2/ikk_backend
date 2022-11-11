@@ -1,31 +1,38 @@
 package com.example.ikk2Timmer.global.Security;
 
-import com.example.ikk2Timmer.domain.user.Entity.User;
+import com.example.ikk2Timmer.domain.user.Entity.Member;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 
 @Getter
 @RequiredArgsConstructor
 public class UserDetailsImpl implements UserDetails {
-    private final User user;
+
+    private final Member member;
+
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        Collection<GrantedAuthority> auth = new ArrayList<>();
+        auth = Collections.singleton(member.getRole());
+        return auth;
     }
 
     @Override
     public String getPassword() {
-        return user.getPassword();
+        return member.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return user.getName();
+        return member.getUsername();
     }
 
     @Override

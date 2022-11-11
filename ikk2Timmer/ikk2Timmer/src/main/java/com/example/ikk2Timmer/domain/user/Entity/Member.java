@@ -1,9 +1,11 @@
 package com.example.ikk2Timmer.domain.user.Entity;
 
+import com.example.ikk2Timmer.domain.record.Entity.Record;
 import lombok.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
+import java.util.Set;
 
 
 @Getter
@@ -17,12 +19,12 @@ public class Member {
     private Long id;
 
     @Column
-    private String name;
+    private String username;
 
     @Column
     private String password;
 
-    private String checkedPassword;
+  //  private String checkedPassword;
 
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -33,6 +35,19 @@ public class Member {
 
     public void addUserAuthority() {
         this.role = Role.USER;
+    }
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private Set<Record> records;
+
+    public void addRecord(Record record) {
+        record.setMember(this);
+        records.add(record);
+    }
+
+    public void removeRecord(Record record) {
+        record.setMember(null);
+        records.remove(record);
     }
 
 

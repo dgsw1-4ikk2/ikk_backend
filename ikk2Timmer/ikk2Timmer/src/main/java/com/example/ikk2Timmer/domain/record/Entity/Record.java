@@ -1,5 +1,6 @@
 package com.example.ikk2Timmer.domain.record.Entity;
 
+import com.example.ikk2Timmer.domain.user.Entity.Member;
 import com.example.ikk2Timmer.domain.user.Entity.User;
 import lombok.Builder;
 import lombok.Getter;
@@ -30,13 +31,13 @@ public class Record {
 
     @JoinColumn
     @ManyToOne(fetch = FetchType.LAZY)
-    private User user;
+    private Member member;
     @Builder
-    public Record(Long id, Integer h, Integer m, User user, LocalDate regDate) {
+    public Record(Long id, Integer h, Integer m, Member member, LocalDate regDate) {
         this.id = id;
         this.h = h;
         this.m = m;
-        this.user = user;
+        this.member = member;
         this.regDate = regDate;
     }
 

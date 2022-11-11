@@ -23,16 +23,7 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private Set<Record> records;
+    /*@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<Record> records;*/
 
-    public void addRecord(Record record) {
-        record.setUser(this);
-        records.add(record);
-    }
-
-    public void removeRecord(Record record) {
-        record.setUser(null);
-        records.remove(record);
-    }
 }

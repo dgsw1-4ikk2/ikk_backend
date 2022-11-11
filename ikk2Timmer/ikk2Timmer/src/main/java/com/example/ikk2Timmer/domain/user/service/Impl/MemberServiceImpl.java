@@ -25,28 +25,33 @@ public class MemberServiceImpl implements MemberService {
 
     private final JwtTokenProvider jwtTokenProvider;
 
+    List<String> roles = new ArrayList<>();
+
+    public List<String> getRoles() {
+        return roles;
+    }
+
     @Transactional
     @Override
     public Long signUp(SignUpDto signUpDto) throws Exception {
+        System.out.println("Dd");
         Member member = memberRepository.save(signUpDto.toEntity());
+        //passwordEncoder.encode(member.getPassword());
         member.encodePassword(passwordEncoder);
-
         member.addUserAuthority();
         return member.getId();
     }
 
     @Override
     public String login(Map<String, String> members) {
-        Member member = memberRepository.findByName(members.get("name"))
+        Member member = memberRepository.findByUsername(members.get("name"))
                 .orElseThrow(() -> new IllegalArgumentException("가입 되지 않은 아이디"));
        /* String password = members.get("password");
         if (passwordEncoder.matches(password,e)) {
             throw new IllegalArgumentException("잘못된 비밀번호입니다.");
         }*/
-
-        List<String> roles = new ArrayList<>();
         roles.add(member.getRole().name());
-
-        return jwtTokenProvider.createToken(member.getName(), roles);
+        System.out.println(roles);
+        return jwtTokenProvider.createToken(member.getUsername(), roles);
     }
 }

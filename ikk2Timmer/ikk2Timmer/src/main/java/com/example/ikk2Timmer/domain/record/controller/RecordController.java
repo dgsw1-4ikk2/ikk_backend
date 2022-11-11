@@ -2,29 +2,30 @@ package com.example.ikk2Timmer.domain.record.controller;
 
 import com.example.ikk2Timmer.domain.record.Dto.RecordDto;
 import com.example.ikk2Timmer.domain.user.service.UserService;
+import com.example.ikk2Timmer.global.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 
+@Slf4j
 @RestController
 @RequestMapping(value = "/api/record")
 @RequiredArgsConstructor
 public class RecordController {
     private final UserService userService;
 
-    @GetMapping("/record")
-    public String record()
-    {
-        return "";
-    }
-
-    @PostMapping("/record")
-    public String record(RecordDto recordDto, Principal principal) {
+    private final JwtTokenProvider jwtTokenProvider;
+    @PostMapping("/")
+    public String record(@RequestBody RecordDto recordDto){
+        Principal principal = SecurityContextHolder.getContext().getAuthentication();
         userService.saveRecord(principal, recordDto);
         return "success";
     }
+
+
 }
