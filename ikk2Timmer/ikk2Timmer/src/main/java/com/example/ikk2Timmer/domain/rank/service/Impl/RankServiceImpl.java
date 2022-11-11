@@ -3,6 +3,7 @@ package com.example.ikk2Timmer.domain.rank.service.Impl;
 import com.example.ikk2Timmer.domain.rank.repository.RankRepository;
 import com.example.ikk2Timmer.domain.rank.service.RankService;
 import com.example.ikk2Timmer.domain.record.Entity.Record;
+import com.example.ikk2Timmer.domain.user.repository.MemberRepository;
 import com.example.ikk2Timmer.domain.user.repository.UserRepository;
 import com.example.ikk2Timmer.domain.record.Entity.ro.RecordRo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class RankServiceImpl implements RankService {
     private RankRepository rankRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    private MemberRepository memberRepository;
 
     @Override
     public List<Record> list() {
@@ -32,7 +33,7 @@ public class RankServiceImpl implements RankService {
     public List<RecordRo> findTotalRank() {
         // 따라하지 말 것
 
-        return userRepository.findAll().stream().map(RecordRo::new)
+        return memberRepository.findAll().stream().map(RecordRo::new)
                 .collect(Collectors.toList());
     }
 }
