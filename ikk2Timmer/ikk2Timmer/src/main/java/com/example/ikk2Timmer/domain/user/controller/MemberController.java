@@ -19,8 +19,6 @@ public class MemberController {
 
     @PostMapping("/signUp")
     public Long signUp(@RequestBody SignUpDto signUpDto) throws Exception {
-        System.out.println("dd");
-        System.out.println( "password : "+ signUpDto.getPassword() + " name : " + signUpDto.getName());
        return memberService.signUp(signUpDto);
     }
 

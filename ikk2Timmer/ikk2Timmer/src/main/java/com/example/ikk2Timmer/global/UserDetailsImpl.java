@@ -1,4 +1,4 @@
-package com.example.ikk2Timmer.global.Security;
+package com.example.ikk2Timmer.global;
 
 import com.example.ikk2Timmer.domain.user.Entity.Member;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.example.ikk2Timmer.global.Security;
+package com.example.ikk2Timmer.global.util;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;

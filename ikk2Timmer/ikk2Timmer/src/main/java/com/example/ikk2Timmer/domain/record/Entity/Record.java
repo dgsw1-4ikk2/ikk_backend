@@ -1,7 +1,6 @@
 package com.example.ikk2Timmer.domain.record.Entity;
 
 import com.example.ikk2Timmer.domain.user.Entity.Member;
-import com.example.ikk2Timmer.domain.user.Entity.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;

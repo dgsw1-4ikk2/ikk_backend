@@ -24,7 +24,6 @@ public class Member {
     @Column
     private String password;
 
-  //  private String checkedPassword;
 
     @Enumerated(EnumType.STRING)
     private Role role;

@@ -1,7 +1,7 @@
-package com.example.ikk2Timmer.global.Security;
+package com.example.ikk2Timmer.global.config;
 
-import com.example.ikk2Timmer.global.JwtAuthenticationFilter;
-import com.example.ikk2Timmer.global.JwtTokenProvider;
+import com.example.ikk2Timmer.global.jwt.JwtAuthenticationFilter;
+import com.example.ikk2Timmer.global.jwt.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

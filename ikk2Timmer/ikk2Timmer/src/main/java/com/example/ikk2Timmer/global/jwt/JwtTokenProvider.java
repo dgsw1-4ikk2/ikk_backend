@@ -1,4 +1,4 @@
-package com.example.ikk2Timmer.global;
+package com.example.ikk2Timmer.global.jwt;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;

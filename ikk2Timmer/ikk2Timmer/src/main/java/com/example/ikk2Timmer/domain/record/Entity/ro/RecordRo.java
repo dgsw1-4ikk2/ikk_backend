@@ -2,7 +2,6 @@ package com.example.ikk2Timmer.domain.record.Entity.ro;
 
 import com.example.ikk2Timmer.domain.record.Entity.Record;
 import com.example.ikk2Timmer.domain.user.Entity.Member;
-import com.example.ikk2Timmer.domain.user.Entity.User;
 import lombok.Getter;
 
 import java.util.Set;
